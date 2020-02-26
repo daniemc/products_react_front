@@ -34,7 +34,7 @@ class ProductForm extends Component {
                         placeholder="Enter product name"
                         onChange={this.onInputChange} />
                 </FormGroup>   
-                <Button onClick={this.onCallAction}>
+                <Button color="primary" onClick={this.onCallAction}>
                     { this.props.mode === 'create' ? 'Save' : 'Update' }
                 </Button>             
             </Form>
