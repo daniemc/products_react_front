@@ -21,7 +21,9 @@ class ProductsList extends Component {
                     this.setState({ products: resp.data });
                 }
             })
-            .catch(err => console.log(err));
+            .catch(err => {
+                toast.error("Error fetching prudcts, try again!");
+            });
     }
 
     componentDidMount() {
@@ -42,7 +44,7 @@ class ProductsList extends Component {
             <div className="pt-5">
                 <Row>
                     <Col sm="12" md={{ size: 6, offset: 3 }}>
-                        <Table striped>
+                        <Table dark hover striped>
                             <thead>
                                 <tr>
                                     <th>#</th>

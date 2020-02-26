@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 import {
     Navbar,
     NavbarBrand,
@@ -15,10 +16,10 @@ export default class NavVar extends Component {
                 <NavbarBrand href="/">VenturaTest</NavbarBrand>                
                 <Nav className="mr-auto" navbar>
                     <NavItem>
-                        <NavLink href="/products">Products list</NavLink>
+                        <Link className="nav-link" to="/products">Products list</Link>
                     </NavItem>
                     <NavItem>
-                        <NavLink href="/products/new">New product</NavLink>
+                        <Link className="nav-link" to="/products/new">New product</Link>
                     </NavItem>
                 </Nav>                    
             </Navbar>
