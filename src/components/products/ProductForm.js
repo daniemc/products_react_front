@@ -50,7 +50,7 @@ class ProductForm extends Component {
     render() { 
         const { name, form_error } = this.state
         return ( 
-            <Form>
+            <Form className="pt-5">
                 <FormGroup>
                     <Label for="product_name">Name</Label>
                     <Input 
