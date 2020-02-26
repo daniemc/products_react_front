@@ -20,6 +20,14 @@ class ProductsList extends Component {
             .catch(err => console.log(err));
     }
 
+    onDeleteProduct(id) {
+        axios.delete(`http://localhost:5000/products/${id}`)
+            .then(resp => {
+                console.log(resp);
+            })
+            .catch(err => console.log(err));
+    }
+
     render() { 
         return ( 
             <div>
@@ -34,16 +42,18 @@ class ProductsList extends Component {
                                 </tr>
                             </thead>
                             <tbody>
-                                {this.state.products && this.state.products.map((product, i) =>
-                                    (<tr>    
+                                {this.state.products && this.state.products.map((product, i) => (
+                                    <tr key={`product-list-${i}`}>    
                                         <td>{i + 1}</td>
                                         <td>{product.name}</td>
                                         <td>
                                             <Button color="warning">Edit</Button>{' '}
-                                            <Button color="danger">Delete</Button>
+                                            <Button 
+                                                color="danger"
+                                                onClick={() => {this.onDeleteProduct(product._id)}}>Delete</Button>
                                         </td>
-                                    </tr>)
-                                )}
+                                    </tr>
+                                ))}
                             </tbody>
                         </Table>
                     </Col>
