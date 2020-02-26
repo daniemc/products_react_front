@@ -8,9 +8,11 @@ class ProductsList extends Component {
         this.state = { 
             products: []
          }
+
+        this.getData = this.getData.bind(this);
     }
 
-    componentDidMount() {
+    getData() {
         axios.get('http://localhost:5000/products')
             .then(resp => {
                 if(resp.status === 200) {
@@ -20,10 +22,14 @@ class ProductsList extends Component {
             .catch(err => console.log(err));
     }
 
+    componentDidMount() {
+        this.getData();
+    }
+
     onDeleteProduct(id) {
         axios.delete(`http://localhost:5000/products/${id}`)
-            .then(resp => {
-                console.log(resp);
+            .then(() => {
+                this.getData();
             })
             .catch(err => console.log(err));
     }
