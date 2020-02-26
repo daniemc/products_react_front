@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ProductForm from './ProductForm';
 import { Row, Col } from 'reactstrap';
 import axios from 'axios'
+import { toast } from 'react-toastify';
 
 class ProductsNew extends Component {
     constructor(props) {
@@ -13,8 +14,11 @@ class ProductsNew extends Component {
         axios.post('http://localhost:5000/products', data)
             .then(resp => {
                 console.log(resp);
+                toast.success("Product created!");
             })
-            .catch(err => console.log(err));
+            .catch(err => {
+                toast.error("Error creating product!");
+            });
     }
 
     render() { 
@@ -27,7 +31,7 @@ class ProductsNew extends Component {
                             action={this.createProduct}
                         />
                     </Col>
-                </Row>                
+                </Row>                            
             </div>
          );
     }

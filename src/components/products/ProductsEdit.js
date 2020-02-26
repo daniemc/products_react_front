@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ProductForm from './ProductForm';
 import { Row, Col } from 'reactstrap';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 class ProductsEdit extends Component {
     constructor(props) {
@@ -19,7 +20,7 @@ class ProductsEdit extends Component {
 
         axios.get(`http://localhost:5000/products/${id}`)
             .then(resp => {
-                if (resp.status === 200) {
+                if (resp.status === 200) {                    
                     this.setState({ product: resp.data });
                 }
             })
@@ -31,8 +32,10 @@ class ProductsEdit extends Component {
         productToEdit.name = data.name
         axios.put(`http://localhost:5000/products/${productToEdit._id}`, productToEdit)
             .then(resp => {
-                if (resp.status === 200) {                    
+                if (resp.status === 200) {  
+                    toast.success("Product updated!");                  
                     this.props.history.push('/products')
+                    
                 }
             })
             .catch(err => console.log(err));

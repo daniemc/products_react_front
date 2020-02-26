@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Row, Col, Table, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 class ProductsList extends Component {
     constructor(props) {
@@ -30,6 +31,7 @@ class ProductsList extends Component {
     onDeleteProduct(id) {
         axios.delete(`http://localhost:5000/products/${id}`)
             .then(() => {
+                toast.success("Product deleted!");
                 this.getData();
             })
             .catch(err => console.log(err));
