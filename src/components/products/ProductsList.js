@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col, Table, Button } from 'reactstrap';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 class ProductsList extends Component {
@@ -53,7 +54,9 @@ class ProductsList extends Component {
                                         <td>{i + 1}</td>
                                         <td>{product.name}</td>
                                         <td>
-                                            <Button color="warning">Edit</Button>{' '}
+                                            <Link to={`/products/edit/${product._id}`}>
+                                                <Button color="warning">Edit</Button>
+                                            </Link>{' '}
                                             <Button 
                                                 color="danger"
                                                 onClick={() => {this.onDeleteProduct(product._id)}}>Delete</Button>
