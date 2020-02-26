@@ -10,7 +10,7 @@ class ProductsNew extends Component {
     }
 
     createProduct(data) {
-        axios.post('http://localhost:5000/products/add', data)
+        axios.post('http://localhost:5000/products', data)
             .then(resp => {
                 console.log(resp);
             })

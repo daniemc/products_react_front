@@ -29,7 +29,7 @@ class ProductsEdit extends Component {
     onUpdateProduct(data) {
         const productToEdit = this.state.product
         productToEdit.name = data.name
-        axios.put('http://localhost:5000/products/update', productToEdit)
+        axios.put(`http://localhost:5000/products/${productToEdit._id}`, productToEdit)
             .then(resp => {
                 if (resp.status === 200) {                    
                     this.props.history.push('/products')
