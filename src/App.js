@@ -15,7 +15,6 @@ function App() {
         <Route path="/products" exact component={ProductsList}></Route>
         <Route path="/products/new" exact component={ProductsNew}></Route>
         <Route path="/products/edit/:id" exact component={ProductsEdit}></Route>
-        <Route path="*" exact component={ProductsList}></Route>
       </Container>
       <ToastContainer position="bottom-right" autoClose={3000} />   
     </Router>
