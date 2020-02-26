@@ -5,7 +5,8 @@ class ProductForm extends Component {
         super(props);        
         this.state = { 
             name: '',
-            product: {}
+            product: {},
+            form_error: false
          }
          this.onInputChange = this.onInputChange.bind(this)
          this.onCallAction = this.onCallAction.bind(this)
@@ -31,8 +32,12 @@ class ProductForm extends Component {
     }
 
     onCallAction() {
+        if (this.state.name.trim() === '') {
+            this.setState({ form_error: true })
+            return;
+        }
         this.props.action(this.state);
-        this.setState({ name: '' });
+        this.setState({ name: '', form_error: false });
     }
 
     onKeyDown(e) {        
@@ -43,7 +48,7 @@ class ProductForm extends Component {
     }
 
     render() { 
-        const { name } = this.state
+        const { name, form_error } = this.state
         return ( 
             <Form>
                 <FormGroup>
@@ -54,6 +59,7 @@ class ProductForm extends Component {
                         name="name" 
                         value={name} 
                         placeholder="Enter product name"
+                        invalid={form_error}
                         onKeyDown={this.onKeyDown}
                         onChange={this.onInputChange} />
                 </FormGroup>   
