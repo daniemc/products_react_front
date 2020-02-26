@@ -18,6 +18,7 @@ class ProductForm extends Component {
 
     onCallAction() {
         this.props.action(this.state);
+        this.setState({ name: '' });
     }
 
     render() { 
